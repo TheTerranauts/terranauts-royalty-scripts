@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "@terra-money/terra.js": "^2.1.9",
+    "@types/lodash": "^4.14.176",
+    "bn.js": "^5.2.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "chalk": "^4.1.2",
+    "dotenv": "^10.0.0",
+    "lodash": "^4.17.21",
+    "typescript-retry-decorator": "^2.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:test": "ts-node -r dotenv/config src/contract/deploy.ts dotenv_config_path=.env.test",
+    "deploy:prod": "ts-node -r dotenv/config src/contract/deploy.ts dotenv_config_path=.env.prod",
+    "migrate:test": "ts-node -r dotenv/config src/contract/migrate.ts dotenv_config_path=.env.test",
+    "migrate:prod": "ts-node -r dotenv/config src/contract/migrate.ts dotenv_config_path=.env.prod",
+    "snapshot:prod": "ts-node -r dotenv/config src/distribute/1_snapshot.ts dotenv_config_path=.env.prod",
+    "claim:test": "ts-node -r dotenv/config src/distribute/2_claim.ts dotenv_config_path=.env.test",
+    "claim:prod": "ts-node -r dotenv/config src/distribute/2_claim.ts dotenv_config_path=.env.prod",
+    "distribute:test": "ts-node -r dotenv/config src/distribute/3_distribute.ts dotenv_config_path=.env.test",
+    "distribute:prod": "ts-node -r dotenv/config src/distribute/3_distribute.ts dotenv_config_path=.env.prod",
+    "2_claim": "ts-node src/distribute/2_claim.ts"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.1.0",
+    "@types/chai": "^4.2.21",
+    "@types/chai-as-promised": "^7.1.4",
+    "@types/chalk": "^2.2.0",
+    "ts-node": "^10.2.0",
+    "typescript": "^4.3.5"
+  }
+}

@@ -26,7 +26,7 @@ import dotenv from "dotenv";
 
     const contractAddress = await instantiateContract(terra, deployer, contractCode, {
         owner: deployer.key.accAddress,
-        nft_count: 8620,
+        nft_count: 0,
     });
 
     console.log(chalk.green("Done!"), `${chalk.blue("contractAddress")}=${contractAddress}`);

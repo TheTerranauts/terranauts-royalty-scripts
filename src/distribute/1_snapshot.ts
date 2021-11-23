@@ -5,11 +5,10 @@ import {chunk} from "../utils/utils";
 import _ from "lodash";
 
 const START_ID = 1;
-const END_ID = 8620;
+const END_ID = parseInt(process.env.NFT_COUNT || '');
 const IDS_PER_QUERY = 500;
 
 const randomEarthCustody = "terra1eek0ymmhyzja60830xhzm7k7jkrk99a60q2z2t";
-const knowhereCustody = "terra12v8vrgntasf37xpj282szqpdyad7dgmkgnq60j";
 
 type MantleResponse = {
     data: {

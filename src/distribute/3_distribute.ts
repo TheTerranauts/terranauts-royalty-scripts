@@ -8,15 +8,16 @@ import {Coin, MsgExecuteContract} from "@terra-money/terra.js";
 
 const _ = require('lodash');
 
+const NFT_COUNT = parseInt(process.env.NFT_COUNT || '');
+
 const owners = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', '/owners.json'), 'utf8'));
 
-const unmintedWallet = "terra1qxa5rfln6qk4nmucwa52z0dfju0hde64d5r72t";
 const randomEarthCustody = "terra1eek0ymmhyzja60830xhzm7k7jkrk99a60q2z2t";
 const knowhereCustody = "terra12v8vrgntasf37xpj282szqpdyad7dgmkgnq60j";
 const terranautsWallet = "terra19jp3up9mke3lt8eg0c8fsaysqtzs6vn23lauls";
 
 const marketCustodyWallets = [
-    unmintedWallet,
+    process.env.IGNORED_OWNER_ADDRESS,
     randomEarthCustody,
     knowhereCustody,
     terranautsWallet,
@@ -41,7 +42,7 @@ type Recipient = {
 
     const ownersMap: [string, string][] = Object.entries(owners);
 
-    const unminted = ownersMap.filter((entry) => entry[1] == unmintedWallet);
+    const unminted = ownersMap.filter((entry) => entry[1] == process.env.IGNORED_OWNER_ADDRESS);
     const randomEarth = ownersMap.filter((entry) => entry[1] == randomEarthCustody);
     const knowhere = ownersMap.filter((entry) => entry[1] == knowhereCustody);
     const terranauts = ownersMap.filter((entry) => entry[1] == terranautsWallet);
@@ -54,7 +55,7 @@ type Recipient = {
     console.log(`Listed on Knowhere: ${knowhere.length}`);
     console.log(`Eligible: ${filtered.length}`);
 
-    assert((unminted.length + randomEarth.length + knowhere.length + filtered.length + terranauts.length) == 8620);
+    assert((unminted.length + randomEarth.length + knowhere.length + filtered.length + terranauts.length) == NFT_COUNT);
 
     const lunaPerNft = rewardsContractBalance.div(filtered.length);
     console.log(`Luna per NFT: ${(+lunaPerNft.amount.toString() / 1000000) .toString()}`);

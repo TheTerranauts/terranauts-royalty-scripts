@@ -35,7 +35,7 @@ export enum Network {
  */
 function parseNetworkStr(network: string) {
   console.log(`Using network ${network}`);
-  
+
   if (!["mainnet", "testnet", "localterra"].includes(network)) {
     throw new Error(`invalid network! must be {mainnet|testnet|localterra}, but network was ${network}`);
   }

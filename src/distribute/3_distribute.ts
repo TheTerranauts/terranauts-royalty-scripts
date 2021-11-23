@@ -8,7 +8,7 @@ import {Coin, MsgExecuteContract} from "@terra-money/terra.js";
 
 const _ = require('lodash');
 
-const owners = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', '/terranaut_owners.json'), 'utf8'));
+const owners = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', '/owners.json'), 'utf8'));
 
 const unmintedWallet = "terra1qxa5rfln6qk4nmucwa52z0dfju0hde64d5r72t";
 const randomEarthCustody = "terra1eek0ymmhyzja60830xhzm7k7jkrk99a60q2z2t";

@@ -10,7 +10,6 @@ const IDS_PER_QUERY = 500;
 
 const randomEarthCustody = "terra1eek0ymmhyzja60830xhzm7k7jkrk99a60q2z2t";
 const knowhereCustody = "terra12v8vrgntasf37xpj282szqpdyad7dgmkgnq60j";
-const terranautsContract = "terra1whyze49j9d0672pleaflk0wfufxrh8l0at2h8q";
 
 type MantleResponse = {
     data: {
@@ -40,7 +39,7 @@ function generateRandomEarthQuery(id: string): string {
     return `  
     id_${id}: WasmContractsContractAddressStore(
       ContractAddress: "${randomEarthCustody}",
-      QueryMsg: "{\\"nft_owner\\": {\\"asset_info\\": {\\"nft\\": {\\"contract_addr\\": \\"${terranautsContract}\\",\\"token_id\\": \\"${id}\\"}}}}"
+      QueryMsg: "{\\"nft_owner\\": {\\"asset_info\\": {\\"nft\\": {\\"contract_addr\\": \\"${process.env.NFT_CONTRACT_ADDRESS}\\",\\"token_id\\": \\"${id}\\"}}}}"
     ) { 
       Result 
     }
@@ -116,7 +115,7 @@ async function fetchKnowhereOwners(): Promise<Map<number, string>> {
             "limit": 500,
             "offset": knowhereListings.length,
             "nftContracts": [
-                `${terranautsContract}`
+                `${process.env.NFT_CONTRACT_ADDRESS}`
             ],
             "status": [
                 "NotStarted",
@@ -188,5 +187,5 @@ class Fetcher {
 (async function () {
     // await fetchMintedTokens();
     const owners = await fetchOwners();
-    fs.writeFileSync("./terranaut_owners.json", JSON.stringify(owners, null, 2));
+    fs.writeFileSync("./owners.json", JSON.stringify(owners, null, 2));
 })();

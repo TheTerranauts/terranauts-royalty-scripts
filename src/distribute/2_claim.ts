@@ -36,26 +36,4 @@ import {getRandomEarthBalance} from "../utils/utils";
     // // todo: read distribution.json file
     const rewardsLuna = +(await queryNativeTokenBalance(terra, process.env.ROYALTY_CONTRACT_ADDRESS!, "uluna"));
     console.log(chalk.green(`Royalty Contract Rewards${rewardsLuna / 1000000} Luna`));
-    //
-    // const totalCount = 1200;
-    //
-    // const recipients:Recipient[] = [];
-    // while (recipients.length < totalCount) {
-    //     recipients.push({
-    //         "addr": "terra17zvkjr3ms389rnkmc7w6lypyqe0phcuygtla83",
-    //         "amount": `10`,
-    //     })
-    // }
-    //
-    // const messages = chunk(recipients, 50).map((m) => {
-    // });
-    //
-    //     return new MsgExecuteContract(deployer.key.accAddress, contractAddress, {
-    //         distribute: {
-    //             recipients: m,
-    //         },
-    //     });
-    // console.log(chalk.green(`sending transaction with ${deployer.key.accAddress}`))
-    // await sendTransaction(terra, deployer, messages);
-    // console.log(chalk.green("Done!"), `${chalk.blue("contractAddress")}=${contractAddress}`);
 })();

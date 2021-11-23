@@ -35,7 +35,7 @@ export enum Network {
  */
 function parseNetworkStr(network: string) {
   if (!["mainnet", "testnet", "localterra"].includes(network)) {
-    throw new Error("invalid network! must be {mainnet|testnet|localterra}");
+    throw new Error(`invalid network! must be {mainnet|testnet|localterra}, but network was ${network}`);
   }
   return network === "mainnet"
     ? Network.Mainnet

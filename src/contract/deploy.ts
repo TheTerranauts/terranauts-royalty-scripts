@@ -17,7 +17,7 @@ import dotenv from "dotenv";
     const contractCode = await storeCode(
         terra,
         deployer,
-        `../../terranauts_royalty_contract/artifacts/terranauts_royalty.wasm`
+        `../artifacts/terranauts_royalty.wasm`
     );
 
     console.log(chalk.green(`Done!`), `${chalk.blue("codeId")}=${contractCode}`);
